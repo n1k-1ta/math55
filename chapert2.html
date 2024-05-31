@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 2: Иван Царевич</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="shortcut icon" href="img/awake.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "EB Garamond", serif;
+        }
+        .dialogue {
+            display: none;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .dialogue .bubble {
+            max-width: 60%;
+            padding: 10px 20px;
+            border-radius: 15px;
+            margin: 10px;
+            position: relative;
+        }
+        .dialogue .bubble::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .hero .bubble {
+            background-color: #d1ecf1;
+            margin-left: auto;
+        }
+        .hero .bubble::after {
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #d1ecf1;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .baba-yaga .bubble {
+            background-color: #f8d7da;
+            margin-right: auto;
+        }
+        .baba-yaga .bubble::after {
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #f8d7da transparent transparent;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .dialogue .avatar img {
+            width: 75%;
+            height: 75%;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+        .hero .avatar {
+            order: 1;
+            z-index: 10;
+        }
+
+        .rules {
+            background-color: #26443F;
+            border: 5px solid #CC9225;
+            border-radius: 15px;
+            padding: 20px;
+            color: #F8F8F8;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        .rules ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .answer-btn {
+            background-color: #26443F; 
+            color: #F8F8F8; 
+            border: 2px solid #CC9225; 
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .correct-answer {
+            border: 2px solid #FFFFFF !important;
+        }
+
+        .incorrect-answer {
+            display: none;
+        }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center mt-5 " data-aos="fade-up">
+        <h1 class="main-title" style="color: #F8F8F8; padding-top: 20vh; margin-bottom: 60vh; font-size: 4.5em;">Путешествие Максима - <span style="color: #CC9225;">Глава 2: Иван Царевич</span></h1>
+        
+        <div class="row justify-content-center align-items-center" style="margin-bottom: 30vh;" data-aos="fade-up">
+            <div class="col-lg-6">
+                <img src="./img/king.svg" alt="Баба Яга" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-lg-6">
+                <p style="font-size: 1.8em; color: #F8F8F8;"><span style="color: #CC9225;"><strong>Иван Царевич</strong></span> - молодой царь <span style="color: #CC9225;"><strong>Великого королевства</strong></span>, с рождения стал увлекаться математикой. Больше всего любит <span style="color: #CC9225;"><strong>умножать</strong></span> числа. Будучи добрым царём, он соглашается помочь Максиму с изучением!</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center" style="margin-bottom: 2vh;" data-aos="fade-up">
+            <div class="col-lg-6">
+                <img src="./img/image 2.svg" alt="Баба Яга" style="max-width: 65%; height: auto;">
+            </div>
+            <div class="col-lg-6">
+                <p style="font-size: 1.8em; color: #F8F8F8;"><span style="color: #F8F8F8;">Здравствуй Иван Царевич, я так рад, что вы согласились мне помочь с умножением чисел!</p>
+                </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center" style="margin-bottom: 2vh;" data-aos="fade-up">
+            <div class="col-lg-6">
+                <img src="./img/king.svg" alt="Баба Яга" style="max-width: 70%; height: auto;">
+            </div>
+            <div class="col-lg-6">
+                <p style="font-size: 1.8em; color: #F8F8F8;"><span style="color: #F8F8F8;">Привет Максим, в моем королевстве каждый поданный знает основы математики, умножение в том числе! Сейчас я покажу тебе правила умножения чисел до 10!</p>
+            </div>
+        </div>
+        
+
+        <div class="rules">
+            <h2>Правила умножения чисел до 10</h2>
+            <p><strong>Умножение:</strong></p>
+            <ul>
+                <li>Умножение чисел — это операция, при которой одно число увеличивается в заданное количество раз.</li>
+                <li>Например, 3 × 2 = 6. Мы умножаем 3 на 2 и получаем 6.</li>
+                <li>Умножать числа можно в любом порядке: 3 × 2 = 2 × 3.</li>
+            </ul>
+            <p><strong>Примеры:</strong></p>
+            <ul>
+                <li>1 × 5 = 5</li>
+                <li>2 × 4 = 8</li>
+                <li>3 × 3 = 9</li>
+                <li>4 × 2 = 8</li>
+                <li>5 × 1 = 5</li>
+                <li>6 × 0 = 0</li>
+                <li>7 × 10 = 70</li>
+                <li>8 × 9 = 72</li>
+                <li>9 × 8 = 72</li>
+                <li>10 × 7 = 70</li>
+            </ul>
+            <p><strong>Правила умножения:</strong></p>
+            <ul>
+                <li>Умножение на 0 всегда дает 0: любое число, умноженное на 0, равно 0.</li>
+                <li>Умножение на 1 не меняет число: любое число, умноженное на 1, равно исходному числу.</li>
+                <li>Умножение на 10 превращает число в число с добавленным нулем: 5 × 10 = 50.</li>
+            </ul>
+        </div>
+        
+
+            <div class="row justify-content-center align-items-center" style="margin-bottom: 2vh;" data-aos="fade-up">
+                <div class="col-lg-6">
+                    <img src="./img/image 2.svg" alt="Баба Яга" style="max-width: 65%; height: auto;">
+                </div>
+                <div class="col-lg-6">
+                    <p style="font-size: 1.8em; color: #F8F8F8;"><span style="color: #F8F8F8;">Раньше мне казалось это трудным, но теперь я всё понял!</p>
+                    </div>
+            </div>
+    
+            <div class="row justify-content-center align-items-center" style="margin-bottom: 2vh;" data-aos="fade-up">
+                <div class="col-lg-6">
+                    <img src="./img/king.svg" alt="Баба Яга" style="max-width: 70%; height: auto;">
+                </div>
+                <div class="col-lg-6">
+                    <p style="font-size: 1.8em; color: #F8F8F8;"><span style="color: #F8F8F8;">Отлично, теперь попробуй решить примеры, которые я для тебя подготовил!</p>
+                </div>
+            </div>
+
+
+        <div id="game-container" style="color: #F8F8F8;">
+            <h2>Уровень 2: Умножение</h2>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 1:<br> 3 × 1  = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(0, 0)">1</button>
+                <button class="answer-btn" onclick="checkAnswer(0, 1)">3</button>
+                <button class="answer-btn" onclick="checkAnswer(0, 2)">4</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 2:<br> 2 × 0 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(1, 0)">2</button>
+                <button class="answer-btn" onclick="checkAnswer(1, 1)">1</button>
+                <button class="answer-btn" onclick="checkAnswer(1, 2)">0</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 3:<br> 2 × 2 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(2, 0)">4</button>
+                <button class="answer-btn" onclick="checkAnswer(2, 1)">0</button>
+                <button class="answer-btn" onclick="checkAnswer(2, 2)">2</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 4:<br> 6 × 3 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(3, 0)">17</button>
+                <button class="answer-btn" onclick="checkAnswer(3, 1)">18</button>
+                <button class="answer-btn" onclick="checkAnswer(3, 2)">19</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 5:<br> 9 × 3 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(4, 0)">26</button>
+                <button class="answer-btn" onclick="checkAnswer(4, 1)">27</button>
+                <button class="answer-btn" onclick="checkAnswer(4, 2)">25</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 6:<br> 3 × 9 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(5, 0)">26</button>
+                <button class="answer-btn" onclick="checkAnswer(5, 1)">25</button>
+                <button class="answer-btn" onclick="checkAnswer(5, 2)">27</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 7:<br> 1 × 1 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(6, 0)">1</button>
+                <button class="answer-btn" onclick="checkAnswer(6, 1)">2</button>
+                <button class="answer-btn" onclick="checkAnswer(6, 2)">0</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 8:<br> 6 × 7 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(7, 0)">40</button>
+                <button class="answer-btn" onclick="checkAnswer(7, 1)">56</button>
+                <button class="answer-btn" onclick="checkAnswer(7, 2)">42</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 9:<br> 7 × 2 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(8, 0)">14</button>
+                <button class="answer-btn" onclick="checkAnswer(8, 1)">15</button>
+                <button class="answer-btn" onclick="checkAnswer(8, 2)">16</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 10:<br> 10 × 9 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(9, 0)">90</button>
+                <button class="answer-btn" onclick="checkAnswer(9, 1)">0</button>
+                <button class="answer-btn" onclick="checkAnswer(9, 2)">91</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 11:<br> 10 × 10 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(10, 0)">90</button>
+                <button class="answer-btn" onclick="checkAnswer(10, 1)">0</button>
+                <button class="answer-btn" onclick="checkAnswer(10, 2)">100</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 12:<br> 6 × 6 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(11, 0)">26</button>
+                <button class="answer-btn" onclick="checkAnswer(11, 1)">36</button>
+                <button class="answer-btn" onclick="checkAnswer(11, 2)">46</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 13:<br> 7 × 7 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(12, 0)">42</button>
+                <button class="answer-btn" onclick="checkAnswer(12, 1)">49</button>
+                <button class="answer-btn" onclick="checkAnswer(12, 2)">59</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 14:<br> 8 × 8 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(13, 0)">64</button>
+                <button class="answer-btn" onclick="checkAnswer(13, 1)">54</button>
+                <button class="answer-btn" onclick="checkAnswer(13, 2)">74</button>
+            </div>
+            <div class="task" style="font-size: 2em; border: 2px solid #CC9225; padding: 10px; margin: 20px 0; border-radius: 20px;">
+                <p>Вопрос 15:<br> 4 × 9 = ?</p>
+                <button class="answer-btn" onclick="checkAnswer(14, 0)">38</button>
+                <button class="answer-btn" onclick="checkAnswer(14, 1)">37</button>
+                <button class="answer-btn" onclick="checkAnswer(14, 2)">36</button>
+            </div>
+        </div>
+        <div id="next-chapter" style="display: none;">
+            <div class="row justify-content-center align-items-center" style="margin-bottom: 2vh;" data-aos="fade-up">
+                <div class="col-lg-6">
+                    <img src="./img/king.svg" alt="Баба Яга" style="max-width: 70%; height: auto;">
+                </div>
+                <div class="col-lg-6">
+                    <p style="font-size: 1.8em; color: #F8F8F8;"><span style="color: #F8F8F8;">Так держать! Теперь я вижу, что ты готов к новым испытанием! Продолжай свой путь, я знаю, что у тебя всё получится!</p>
+                </div>
+            </div>
+            <a href="./chapert3.html" class="btn btn-primary" style="background-color: #F8F8F8; color: #26443F; border: 2px solid #CC9225; border-radius: 20px; padding: 10px 20px; font-size: 2.5em;"><strong>Глава 3</strong></a>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        
+
+        let correctAnswers = [1, 2, 0, 1, 1, 2, 0, 2, 0, 0, 2, 1, 1, 0, 2]; 
+        let userAnswers = Array(correctAnswers.length).fill(null); 
+
+        function checkAnswer(taskIndex, answerIndex) {
+            if (answerIndex === correctAnswers[taskIndex]) {
+                $('.task').eq(taskIndex).find('.answer-btn').eq(answerIndex).addClass('correct-answer');
+                $('.task').eq(taskIndex).find('.answer-btn').addClass('disabled');
+            } else {
+                $('.task').eq(taskIndex).find('.answer-btn').eq(answerIndex).addClass('incorrect-answer');
+            }
+            
+            userAnswers[taskIndex] = answerIndex;
+
+            if (userAnswers.filter((val, index) => val === correctAnswers[index]).length === correctAnswers.length) {
+                $('#next-chapter').show();
+            }
+        }
+    </script>
+</body>
+</html>
